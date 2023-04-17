@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")  // spring boot gradle plugin will used for generate jar
+    }
+}
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    /*compileOnly {
+        extendsFrom annotationProcessor
+    }*/
+}
+
+repositories {
+    mavenCentral()
+}
+
+description = "PDF Document service"
+
+apply plugin: 'java'                                // plugin for java
+apply plugin: 'org.springframework.boot'            // plugin for spring boot framework
+
+jar {
+    baseName = 'document-service'             // jar file name
+    version =  '1.0.0'                                  // application version
+}
+
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    compile("org.springframework.boot:spring-boot-starter-web")     // web application dependency
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    developmentOnly('org.springframework.boot:spring-boot-devtools')
+    //annotationProcessor 'org.projectlombok:lombok'
+    //implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage'
+    }
+
+    runtimeOnly 'com.h2database:h2'
+
+    //testCompile 'junit:junit'
+    testCompile 'org.mockito:mockito-core'
+}
+
+sourceCompatibility = 1.8                               // for Java 1.8
+targetCompatibility = 1.8
+
+group 'document-service'
+version '1.0-SNAPSHOT'
+
+
+
+

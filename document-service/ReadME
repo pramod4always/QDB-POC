@@ -1,0 +1,22 @@
+This is sample application to assist a Bank with its Document Management System.
+
+Basic core rest api has been done which are functional requirements for this application.
+Tools used so far - Java Spring, rest apis, using Gradle as build tool and h2 in memory database.
+
+Note - To execute basic core apis, kindly follow "PDF-Document-Endpoints-Steps.docx" under project directory.
+
+It may take couple of more days to integrate 3rd party api for below requirements.
+-  Feign api on top of rest call between microservices.
+-  Retry and fallback logic for integration with 3rd party system with circuit breaker or resilience4j open api.
+
+Note - Post and comment apis have been added in document-service but after integration of aforementioned
+        open apis these endpoints will move in separate microservice.
+
+Note - There are many queries came up while implementing core buisness apis which took time and may be
+        while implementing integration with 3rd party may came up other queries as well.
+
+Note - Some more points need to be added in requirement description as below and so on.
+        eg. - H2 is in memory database so once application restart again h2 database got refresh.
+            In case table having no entry but uploaded files are there that should also be deleted
+            once application restart again.
+
